@@ -14,12 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -65,7 +62,6 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
         private boolean state;
         private int timer=0;
         private static final DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-
         private final static String FILE_NAME = "filename.txt";
 
 
@@ -74,14 +70,11 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_graf);
             state = false;
-
             startRecord = (Button) findViewById(R.id.start_record);
             stopRecord = (Button) findViewById(R.id.stop_record);
             showRecord = (Button) findViewById(R.id.show_record);
             recordResult = (TextView) findViewById(R.id.record_result);
             deleteFile();
-
-
 
             startRecord.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,9 +105,6 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
                     buttonClick();
                 }
             });
-
-
-
 
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -233,12 +223,6 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
             });
             graph.addSeries(series);
         }
-
-
-
-
-
-
         private void addDataPoint(double acceleration) {
             dataPoints[499] = acceleration;
         }
@@ -284,7 +268,6 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
         public void onSensorChanged(SensorEvent event) {
             if (plotData) {
                 addEntry(event);
-
                 plotData = false;
             }
         }
@@ -297,7 +280,7 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
         @Override
         protected void onResume() {
             super.onResume();
-            mSensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_GAME);
+            mSensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
         @Override
@@ -337,11 +320,19 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
+                float xf=(float) (On_1 + altha * (x - On_1));
+                float yf=(float) (On_1 + altha * (y - On_1));
+                float zf = (float) (On_1 + altha * (z - On_1));
+
                 Date date = new Date();
                 String printTime = sdf.format(date);
-                String text = printTime + "x: " + Float.toString(x) +
-                        "y: " + Float.toString(y) +
-                        "z: " + Float.toString(z) + "\n";
+                String text = printTime + "\n"+
+                        " x : " + Float.toString(x) +
+                        "  y : " + Float.toString(y) +
+                        "  z : " + Float.toString(z) + "\n"
+                        + " xf: " + Float.toString(xf) +
+                        "    yf : " + Float.toString(yf) +
+                        "     zf : " + Float.toString(zf) + "\n" + "_________" + "\n";
 
                 fos = openFileOutput(FILE_NAME, MODE_APPEND);
                 fos.write(text.getBytes());
@@ -384,6 +375,4 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
                 }
             }
         }
-
-
     }
