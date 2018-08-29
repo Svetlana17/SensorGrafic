@@ -34,8 +34,9 @@
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="200dip" />
+            android:layout_height="300dip" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -46,21 +47,27 @@
                 android:id="@+id/start_record"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="350dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/colorTree"
                 android:text="Record" />
 
             <Button
                 android:id="@+id/stop_record"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="350dp"
+                android:layout_marginLeft="15dp"
+                android:background="@color/colorTree"
                 android:text="Stop" />
 
             <Button
                 android:id="@+id/show_record"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="350dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/colorTree"
                 android:text="Show" />
 
         </LinearLayout>
@@ -73,7 +80,7 @@
                 android:id="@+id/record_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="320dp"
+                android:layout_marginTop="400dp"
                 android:text="HERE !!!" />
 
 
