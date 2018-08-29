@@ -25,12 +25,12 @@
 
         <include layout="@layout/content_graf" />
 
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/fab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_gravity="bottom|end"-->
-            <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|end"
+            app:srcCompat="@android:drawable/ic_dialog_dialer" />
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
@@ -42,6 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+
+
 
             <Button
                 android:id="@+id/start_record"

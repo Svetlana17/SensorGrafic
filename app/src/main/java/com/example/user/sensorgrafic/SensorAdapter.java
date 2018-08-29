@@ -87,7 +87,7 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.ViewHolder
             version=(TextView) itemView.findViewById(R.id.version);
             max=(TextView) itemView.findViewById(R.id.max);
             resolution=(TextView) itemView.findViewById(R.id.resolution);
-            textViewX=(TextView) itemView.findViewById(R.id.textX);
+
         }
 
         @Override
