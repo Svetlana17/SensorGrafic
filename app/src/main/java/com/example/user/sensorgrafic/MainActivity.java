@@ -1,16 +1,18 @@
 package com.example.user.sensorgrafic;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements  View.OnClickListener{
 
     SensorManager sensorManager;
     List<Sensor> sensorList=new ArrayList<>();
@@ -39,4 +41,13 @@ public class MainActivity extends AppCompatActivity {
         sensorAdapter.notifyDataSetChanged();
 
     }
+    @Override
+    public void onClick(View v) {
+        int selectedItemposition=recyclerView.getChildPosition(v);
+        Sensor sensor=sensorList.get(selectedItemposition);
+        Intent intent=new Intent(this,GrafActivity.class);
+        intent.putExtra( "sensortype",sensor.getType());
+        this.startActivity(intent);
     }
+
+}

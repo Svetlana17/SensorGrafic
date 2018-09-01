@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.ViewHolder> {
+public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.ViewHolder>  {
     private List<Sensor> sensors=new ArrayList<>();
     private LayoutInflater mIflater;
     private Context mContext;
@@ -31,7 +31,7 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
       View view=mIflater.inflate(R.layout.adapter_item,viewGroup,false);
-
+      view.setOnClickListener((View.OnClickListener) mContext);
 
         return new ViewHolder(view);
     }
@@ -45,19 +45,19 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.ViewHolder
         viewHolder.version.setText("Version: " + String.valueOf(sensor.getVersion()));
         viewHolder.max.setText("Maximum: " + String.valueOf( sensor.getMaximumRange()));
 
-        viewHolder.name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 Intent intent=new Intent(mContext, GrafActivity.class);
-                 Integer i=sensor.getType();
-//              String s= String.valueOf(sensor.getType());
-                    intent.putExtra("sensortype",sensor.getType());
-
-                StringBuilder sb = new StringBuilder();
-
-                mContext.startActivity(intent);
-            }
-        });
+//        viewHolder.name.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                 Intent intent=new Intent(mContext, GrafActivity.class);
+//                 Integer i=sensor.getType();
+////              String s= String.valueOf(sensor.getType());
+//                    intent.putExtra("sensortype",sensor.getType());
+//
+//                StringBuilder sb = new StringBuilder();
+//
+//                mContext.startActivity(intent);
+//            }
+//        });
 
 
     }
@@ -66,6 +66,7 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.ViewHolder
     public int getItemCount() {
         return sensors.size();
     }
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements SensorEventListener{

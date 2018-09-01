@@ -50,7 +50,7 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
     float zz;
 
     private float On_1 = 1;
-    private float altha = 0.05f;
+    private float altha = 0.1f;
 
     private boolean permissionGranted;
 
@@ -328,10 +328,10 @@ public class GrafActivity extends AppCompatActivity implements SensorEventListen
                 String printTime = sdf.format(date);
                 String text = printTime + "\n"+
                         " x : " + Float.toString(x) +
-                        "  y : " + Float.toString(y) +
-                        "  z : " + Float.toString(z) + "\n"
+                        "    y : " + Float.toString(y) +
+                        "     z : " + Float.toString(z) + "\n"
                         + " xf: " + Float.toString(xf) +
-                        "    yf : " + Float.toString(yf) +
+                        "      yf : " + Float.toString(yf) +
                         "     zf : " + Float.toString(zf) + "\n" + "_________" + "\n";
 
                 fos = openFileOutput(FILE_NAME, MODE_APPEND);
